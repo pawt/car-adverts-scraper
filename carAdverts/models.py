@@ -1,0 +1,29 @@
+from sqlalchemy.engine.url import URL
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import create_engine, Column, Integer, String
+
+import settings
+
+DeclarativeBase = declarative_base()
+
+def db_connect():
+    """
+    Performs database connection using database settings from settings.py.
+    Returns sqlalchemy engine instance
+    """
+    return create_engine(URL(**settings.DATABASE))
+
+def create_adverts_table(engine):
+    """"""
+    DeclarativeBase.metadata.create_all(engine)
+
+class CarAdverts(DeclarativeBase):
+    """Sqlalchemy caradverts model"""
+    __tablename__ = "car_adverts_table"
+
+    id = Column(Integer, primary_key=True)
+    title = Column('title', String)
+    price = Column('price', String, nullable=True)
+    year = Column('year', String, nullable=True)
+    location = Column('location', String, nullable=True)
+    link = Column('link', String, nullable=True)

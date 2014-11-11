@@ -1,1 +1,2 @@
-carAdverts/settings_dev.py
+carAdverts/settings_dev*
+carAdverts/*.pyc

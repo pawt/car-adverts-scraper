@@ -27,3 +27,4 @@ class CarAdverts(DeclarativeBase):
     year = Column('year', String, nullable=True)
     location = Column('location', String, nullable=True)
     link = Column('link', String, nullable=True)
+    date = Column('date', String, nullable=True)

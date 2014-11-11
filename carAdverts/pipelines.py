@@ -6,7 +6,6 @@
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy import func
 from models import CarAdverts, db_connect, create_adverts_table
 
 
@@ -35,6 +34,10 @@ class CarAdvertsPipeline(object):
             if not session.query(CarAdverts).filter(CarAdverts.link==advert.link).count():
                 session.add(advert)
                 session.commit()
+            #else:
+                #tmp_advert = session.query(CarAdverts).filter(CarAdverts.title == advert.title).one()
+                #print("#######")
+                #print(tmp_advert.title)
         except:
             session.rollback()
             raise

@@ -15,3 +15,4 @@ class CarAdvertsItem(scrapy.Item):
     location = scrapy.Field()
     year = scrapy.Field()
     link = scrapy.Field()
+    date = scrapy.Field()

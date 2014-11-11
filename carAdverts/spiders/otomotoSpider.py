@@ -2,6 +2,7 @@ __author__ = 'pawt'
 
 import scrapy
 from carAdverts.items import CarAdvertsItem
+from time import strftime
 
 class OtoMotoSpider(scrapy.Spider):
     name = "otomoto"
@@ -18,5 +19,6 @@ class OtoMotoSpider(scrapy.Spider):
             item['year'] = sel.xpath('p[@class="basic"]/span/strong/text()').extract()[0]
             item['location'] = sel.xpath('aside/strong/text()').extract()[0].strip()
             item['link'] = "http://www.otomoto.pl" + str(sel.xpath('aside/a/@href').extract()[0])
+            item['date'] = strftime("%Y-%m-%d %H:%M:%S")
             #print(location.encode('utf-8'))
             yield item

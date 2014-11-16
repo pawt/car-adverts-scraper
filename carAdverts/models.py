@@ -1,6 +1,6 @@
 from sqlalchemy.engine.url import URL
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy import create_engine, Column, Integer, String, Boolean
 
 import settings
 
@@ -28,3 +28,7 @@ class CarAdverts(DeclarativeBase):
     location = Column('location', String, nullable=True)
     link = Column('link', String, nullable=True)
     date = Column('date', String, nullable=True)
+    mailsent = Column('mailsent', Boolean, nullable=False, default=False)
+
+    def getInfo(self):
+        return self.title, self.price, self.year, self.location, self.link, self.date

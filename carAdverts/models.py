@@ -29,6 +29,7 @@ class CarAdverts(DeclarativeBase):
     link = Column('link', String, nullable=True)
     date = Column('date', String, nullable=True)
     mailsent = Column('mailsent', Boolean, nullable=False, default=False)
+    isvalid = Column('isvalid', Boolean, nullable=True, default=True)
 
     def getInfo(self):
         return self.title, self.price, self.year, self.location, self.link, self.date

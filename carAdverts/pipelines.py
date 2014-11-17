@@ -34,10 +34,10 @@ class CarAdvertsPipeline(object):
             if not session.query(CarAdverts).filter(CarAdverts.link==advert.link).count():
                 session.add(advert)
                 session.commit()
-            #else:
-                #tmp_advert = session.query(CarAdverts).filter(CarAdverts.title == advert.title).one()
-                #print("#######")
-                #print(tmp_advert.title)
+            else:
+                print("INFO: advert (title = %s) still exists." % advert.title)
+                session.query(CarAdverts).filter(CarAdverts.link == advert.link).update({'isvalid': True})
+                session.commit()
         except:
             session.rollback()
             raise

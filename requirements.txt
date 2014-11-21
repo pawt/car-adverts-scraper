@@ -4,12 +4,6 @@ SQLAlchemy==0.9.8
 Scrapy==0.24.4
 Sphinx==1.2.2
 Twisted==14.0.2
---allow-unverified Twisted-Conch
-Twisted-Conch==13.2.0
-Twisted-Core==13.2.0
-Twisted-Mail==13.2.0
-Twisted-Names==13.2.0
-Twisted-Web==13.2.0
 apt-xapian-index==0.45
 argparse==1.2.1
 boto==2.20.1
@@ -53,7 +47,6 @@ scrapyd==1.0.1
 sessioninstaller==0.0.0
 simplegeneric==0.8.1
 six==1.5.2
-software-center-aptd-plugins==0.0.0
 urllib3==1.7.1
 w3lib==1.10.0
 wsgiref==0.1.2

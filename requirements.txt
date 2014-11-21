@@ -6,7 +6,7 @@ Sphinx==1.2.2
 Twisted==14.0.2
 argparse==1.2.1
 boto==2.20.1
-chardet==2.0.1
+chardet==2.3.1
 command-not-found==0.3
 cssselect==0.9.1
 decorator==3.4.0

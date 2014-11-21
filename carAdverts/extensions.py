@@ -5,7 +5,7 @@ from models import CarAdverts, db_connect
 
 NEW_ADVERTS_HEADER = "\n\n ######## NEW ADVERTS ########\n\n"
 
-def setDBsession():
+def set_db_session():
     '''
 
     :return:
@@ -106,7 +106,7 @@ class StatusMailer(object):
 
     def spider_closed(self, spider):
 
-        getSession = setDBsession()
+        getSession = set_db_session()
         getSession.expire_on_commit = False
 
         spider_stats = self.stats.get_stats(spider)
@@ -128,9 +128,9 @@ class StatusMailer(object):
             self.mail.send(
                 to=self.recipients,
                 subject='Crawler for %s' % (spider.name),
-                body= spiderstats_string +
-                      NEW_ADVERTS_HEADER +
-                      new_adverts.encode('utf-8')
+                body=spiderstats_string +
+                     NEW_ADVERTS_HEADER +
+                     new_adverts.encode('utf-8')
             )
         else:
             print("INFO: No new adverts scraped -> email is not sent.")

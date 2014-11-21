@@ -20,9 +20,9 @@ DATABASE = {'drivername': '',
             'password': '',
             'database': ''}
 
-ITEM_PIPELINES = {'carAdverts.pipelines.CarAdvertsPipeline' : 1 }
+ITEM_PIPELINES = {'carAdverts.pipelines.CarAdvertsPipeline': 1}
 
-EXTENSIONS = { 'carAdverts.extensions.StatusMailer': 500 }
+EXTENSIONS = {'carAdverts.extensions.StatusMailer': 500}
 
 STATUSMAILER_RECIPIENTS = [""]
 MAIL_HOST = 'smtp.gmail.com'
@@ -31,9 +31,9 @@ MAIL_USER = ''
 MAIL_PASS = ''
 
 try:
-   from settings_dev import *
+    from settings_dev import *
 except ImportError:
-   pass
+    pass
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'carAdverts (+http://www.yourdomain.com)'

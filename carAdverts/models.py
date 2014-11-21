@@ -6,6 +6,7 @@ import settings
 
 DeclarativeBase = declarative_base()
 
+
 def db_connect():
     """
     Performs database connection using database settings from settings.py.
@@ -13,9 +14,11 @@ def db_connect():
     """
     return create_engine(URL(**settings.DATABASE))
 
+
 def create_adverts_table(engine):
     """"""
     DeclarativeBase.metadata.create_all(engine)
+
 
 class CarAdverts(DeclarativeBase):
     """Sqlalchemy caradverts model"""

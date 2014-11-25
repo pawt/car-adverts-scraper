@@ -12,7 +12,7 @@ def db_connect():
     Performs database connection using database settings from settings.py.
     Returns sqlalchemy engine instance
     """
-    return create_engine(URL(**settings.DATABASE))
+    return create_engine(URL(**settings.DATABASE_HEROKU))
 
 
 def create_adverts_table(engine):

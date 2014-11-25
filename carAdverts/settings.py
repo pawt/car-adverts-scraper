@@ -32,11 +32,12 @@ ITEM_PIPELINES = {'carAdverts.pipelines.CarAdvertsPipeline': 1}
 
 EXTENSIONS = {'carAdverts.extensions.StatusMailer': 500}
 
-STATUSMAILER_RECIPIENTS = [""]
+#STATUSMAILER_RECIPIENTS = [""]
 MAIL_HOST = 'smtp.gmail.com'
 MAIL_PORT = 587
-MAIL_USER = ''
-MAIL_PASS = ''
+MAIL_USER = 'pawt87'
+MAIL_PASS = 'DexterMorgan16'
+STATUSMAILER_RECIPIENTS = ["ptrybulski@gmail.com"]
 
 try:
     from settings_dev import *

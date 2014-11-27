@@ -11,7 +11,7 @@ def set_db_session():
     :return:
     '''
     #establishing connection to DB
-    engine = db_connect()
+    engine = db_connect("heroku")
     session = sessionmaker(bind=engine)
     return session()
 

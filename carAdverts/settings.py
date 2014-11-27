@@ -7,6 +7,7 @@
 #
 #     http://doc.scrapy.org/en/latest/topics/settings.html
 #
+import os
 
 BOT_NAME = 'carAdverts'
 
@@ -20,24 +21,27 @@ DATABASE = {'drivername': '',
             'password': '',
             'database': ''}
 
+'''
 DATABASE_HEROKU = {'drivername': 'postgres',
                 'host': 'ec2-54-204-45-126.compute-1.amazonaws.com',
                 'port': '5432',
                 'username': 'hiuiuotcxvgjdi',
                 'password': 'iygllY6zpSU-65tDxoTqyRRKcp',
                 'database': 'ddm9pfqo83f4oc'}
-
+'''
 
 ITEM_PIPELINES = {'carAdverts.pipelines.CarAdvertsPipeline': 1}
 
 EXTENSIONS = {'carAdverts.extensions.StatusMailer': 500}
 
-#STATUSMAILER_RECIPIENTS = [""]
-MAIL_HOST = 'smtp.gmail.com'
-MAIL_PORT = 587
-MAIL_USER = 'pawt87'
-MAIL_PASS = 'DexterMorgan16'
-STATUSMAILER_RECIPIENTS = ["ptrybulski@gmail.com"]
+try:
+    MAIL_HOST = os.environ['MAIL_HOST']
+    MAIL_PORT = os.environ['MAIL_PORT']
+    MAIL_USER = os.environ['MAIL_USER']
+    MAIL_PASS = os.environ['MAIL_PASS']
+    STATUSMAILER_RECIPIENTS = [os.environ['STATUSMAILER_RECIPIENTS']]
+except KeyError:
+    pass
 
 try:
     from settings_dev import *

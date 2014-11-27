@@ -16,7 +16,7 @@ def db_connect(db):
     if db is "local":
         return create_engine(URL(**settings.DATABASE))
     elif db is "heroku":
-        return create_engine(URL(os.environ['DATABASE_URL']))
+        return create_engine(os.environ['DATABASE_URL'])
 
 
 def create_adverts_table(engine):

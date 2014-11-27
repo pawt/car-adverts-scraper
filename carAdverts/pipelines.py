@@ -16,7 +16,7 @@ class CarAdvertsPipeline(object):
         Initializes database connection and sessionmaker.
         Creates deals table.
         """
-        engine = db_connect()
+        engine = db_connect("heroku")
         create_adverts_table(engine)
         self.Session = sessionmaker(bind=engine)
 

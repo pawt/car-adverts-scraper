@@ -1,18 +1,22 @@
 from sqlalchemy.engine.url import URL
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine, Column, Integer, String, Boolean
+import os
 
 import settings
 
 DeclarativeBase = declarative_base()
 
 
-def db_connect():
+def db_connect(db):
     """
     Performs database connection using database settings from settings.py.
     Returns sqlalchemy engine instance
     """
-    return create_engine(URL(**settings.DATABASE_HEROKU))
+    if db is "local":
+        return create_engine(URL(**settings.DATABASE))
+    elif db is "heroku":
+        return create_engine(URL(os.environ['DATABASE_URL']))
 
 
 def create_adverts_table(engine):

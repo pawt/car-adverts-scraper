@@ -21,15 +21,6 @@ DATABASE = {'drivername': '',
             'password': '',
             'database': ''}
 
-'''
-DATABASE_HEROKU = {'drivername': 'postgres',
-                'host': 'ec2-54-204-45-126.compute-1.amazonaws.com',
-                'port': '5432',
-                'username': 'hiuiuotcxvgjdi',
-                'password': 'iygllY6zpSU-65tDxoTqyRRKcp',
-                'database': 'ddm9pfqo83f4oc'}
-'''
-
 ITEM_PIPELINES = {'carAdverts.pipelines.CarAdvertsPipeline': 1}
 
 EXTENSIONS = {'carAdverts.extensions.StatusMailer': 500}

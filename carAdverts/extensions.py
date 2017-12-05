@@ -11,9 +11,8 @@ def set_db_session():
     :return:
     '''
     #establishing connection to DB
-    # engine = db_connect("heroku")
-    print("Laczymy sie baza...")
-    engine = db_connect("local")
+    engine = db_connect("heroku")
+    #engine = db_connect("local")
     session = sessionmaker(bind=engine)
     return session()
 

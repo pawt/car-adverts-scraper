@@ -14,12 +14,19 @@ BOT_NAME = 'carAdverts'
 SPIDER_MODULES = ['carAdverts.spiders']
 NEWSPIDER_MODULE = 'carAdverts.spiders'
 
-DATABASE = {'drivername': '',
-            'host': '',
-            'port': '',
-            'username': '',
-            'password': '',
-            'database': ''}
+# DATABASE = {'drivername': '',
+#             'host': '',
+#             'port': '',
+#             'username': '',
+#             'password': '',
+#             'database': ''}     
+
+DATABASE = {'drivername': 'postgres',
+            'host': 'localhost',
+            'port': '5432',
+            'username': 'postgres',
+            'password': 'red-devils',
+            'database': 'heroku'}
 
 ITEM_PIPELINES = {'carAdverts.pipelines.CarAdvertsPipeline': 1}
 

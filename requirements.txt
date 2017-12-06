@@ -26,3 +26,4 @@ pyserial==2.6
 requests==2.2.1
 scrapyd==1.0.1
 urllib3==1.7.1
+service_identity==17.0.0

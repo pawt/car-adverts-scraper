@@ -31,6 +31,8 @@ try:
     MAIL_PORT = os.environ['MAIL_PORT']
     MAIL_USER = os.environ['MAIL_USER']
     MAIL_PASS = os.environ['MAIL_PASS']
+    MAIL_USE_SSL = os.environ['MAIL_USE_SSL']
+    MAIL_USE_TSL = os.environ['MAIL_USE_TSL']
     STATUSMAILER_RECIPIENTS = [os.environ['STATUSMAILER_RECIPIENTS']]
 except KeyError:
     pass

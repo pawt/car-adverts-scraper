@@ -66,6 +66,7 @@ def update_isvalid_column_in_DB(session):
     :param session:
     :return:
     '''
+    print("INFO: Updating isvalid column in DB...")
     all_adverts = session.query(CarAdverts).all()
     for advert in all_adverts:
         session.query(CarAdverts).filter(CarAdverts.id == advert.id).update({'isvalid': False})
@@ -97,7 +98,7 @@ class StatusMailer(object):
     def from_crawler(cls, crawler):
 
         recipients = crawler.settings.getlist('STATUSMAILER_RECIPIENTS')
-        print("################")
+        print("####### email recipients: ######")
         print(recipients)
         mail = MailSender.from_settings(crawler.settings)
 
@@ -122,12 +123,14 @@ class StatusMailer(object):
             getSession.rollback()
             raise
         finally:
+            print("INFO: closing the connection to DB...")
             getSession.close()
 
         #formatting dictionary as a string (body msg of the email)
         spiderstats_string = '\n'.join('{} : {}'.format(key, val) for key, val in sorted(spider_stats.items()))
 
         if new_adverts:
+            print("INFO: New adverts found! trying to send e-mail...")
             self.mail.send(
                 to=self.recipients,
                 subject='Crawler for %s' % (spider.name),

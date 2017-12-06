@@ -1,7 +1,7 @@
 Django==1.6.1
 MarkupSafe==0.18
 SQLAlchemy==0.9.8
-Scrapy==0.24.4
+Scrapy==1.4.0
 Sphinx==1.2.2
 Twisted==14.0.2
 argparse==1.2.1

@@ -131,6 +131,7 @@ class StatusMailer(object):
 
         if new_adverts:
             print("INFO: New adverts found! trying to send e-mail...")
+            print("INFO: self.recipients: " + str(self.recipients))
             self.mail.send(
                 to=self.recipients,
                 subject='Crawler for %s' % (spider.name),

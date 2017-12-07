@@ -101,6 +101,9 @@ class StatusMailer(object):
         print("####### email recipients: ######")
         print(recipients)
         mail = MailSender.from_settings(crawler.settings)
+        print("XXXXXXXXX")
+        print(mail)
+        print("XXXXXXXXXX")
 
         ext = cls(crawler.stats, mail, recipients)
 

@@ -3,7 +3,7 @@ from scrapy.mail import MailSender
 from sqlalchemy.orm import sessionmaker
 from models import CarAdverts, db_connect
 
-NEW_ADVERTS_HEADER = "\n\n ######## NEW ADVERTS ########\n\n"
+NEW_ADVERTS_HEADER = "\n\n ######## NOWE OGŁOSZENIA ########\n\n"
 
 def set_db_session():
     '''
@@ -134,9 +134,10 @@ class StatusMailer(object):
             self.mail.send(
                 to=self.recipients,
                 subject='Crawler for %s' % (spider.name),
-                body=spiderstats_string +
-                     NEW_ADVERTS_HEADER +
-                     new_adverts.encode('utf-8')
+                body=NEW_ADVERTS_HEADER +
+                     new_adverts.encode('utf-8') +
+                     "\n =================================== \n" +
+                     spiderstats_string
             )
         else:
             print("INFO: No new adverts scraped -> email is not sent.")

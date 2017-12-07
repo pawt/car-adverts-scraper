@@ -3,7 +3,7 @@ from scrapy.mail import MailSender
 from sqlalchemy.orm import sessionmaker
 from models import CarAdverts, db_connect
 
-NEW_ADVERTS_HEADER = "\n\n ######## NOWE OGŁOSZENIA ########\n\n"
+NEW_ADVERTS_HEADER = "\n\n ######## NOWE OGLOSZENIA ########\n\n"
 
 def set_db_session():
     '''

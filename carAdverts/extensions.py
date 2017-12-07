@@ -98,12 +98,8 @@ class StatusMailer(object):
     def from_crawler(cls, crawler):
 
         recipients = crawler.settings.getlist('STATUSMAILER_RECIPIENTS')
-        print("####### email recipients: ######")
-        print(recipients)
+
         mail = MailSender.from_settings(crawler.settings)
-        print("XXXXXXXXX")
-        print(mail)
-        print("XXXXXXXXXX")
 
         ext = cls(crawler.stats, mail, recipients)
 

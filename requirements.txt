@@ -34,6 +34,7 @@ pyOpenSSL==17.5.0
 queuelib==1.4.2
 requests==2.18.4
 Scrapy==1.4.0
+sendgrid==5.3.0
 service-identity==17.0.0
 shutilwhich==1.1.0
 six==1.11.0

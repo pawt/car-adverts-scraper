@@ -2,6 +2,9 @@ from scrapy import signals
 from scrapy.mail import MailSender
 from sqlalchemy.orm import sessionmaker
 from models import CarAdverts, db_connect
+import sendgrid
+import os
+from sendgrid.helpers.mail import *
 
 NEW_ADVERTS_HEADER = "\n\n ######## NOWE OGLOSZENIA ########\n\n"
 
@@ -131,14 +134,30 @@ class StatusMailer(object):
         if new_adverts:
             print("INFO: New adverts found! trying to send e-mail...")
             print("INFO: self.recipients: " + str(self.recipients))
-            self.mail.send(
-                to=self.recipients,
-                subject='Crawler for %s' % (spider.name),
-                body=NEW_ADVERTS_HEADER +
-                     new_adverts.encode('utf-8') +
-                     "\n =================================== \n" +
-                     spiderstats_string
-            )
+            sg = sendgrid.SendGridAPIClient(apikey=os.environ.get('SENDGRID_API_KEY'))
+            from_email = Email(os.environ.get('SENDGRID_USERNAME'))
+            subject = "Hello World from the SendGrid Python Library!"
+            to_email = Email("pawt87@gmail.com")
+            content = Content("text/plain", "Hello, Email!")
+            mail = Mail(from_email, subject, to_email, content)
+            response = sg.client.mail.send.post(request_body=mail.get())
+            print(response.status_code)
+            print(response.body)
+            print(response.headers)
         else:
             print("INFO: No new adverts scraped -> email is not sent.")
+
+        # if new_adverts:
+        #     print("INFO: New adverts found! trying to send e-mail...")
+        #     print("INFO: self.recipients: " + str(self.recipients))
+        #     self.mail.send(
+        #         to=self.recipients,
+        #         subject='Crawler for %s' % (spider.name),
+        #         body=NEW_ADVERTS_HEADER +
+        #              new_adverts.encode('utf-8') +
+        #              "\n =================================== \n" +
+        #              spiderstats_string
+        #     )
+        # else:
+        #     print("INFO: No new adverts scraped -> email is not sent.")
 

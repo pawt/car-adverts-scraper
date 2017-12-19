@@ -136,14 +136,13 @@ class StatusMailer(object):
             print("INFO: self.recipients: " + str(self.recipients))
             sg = sendgrid.SendGridAPIClient(apikey=os.environ.get('SENDGRID_API_KEY'))
             from_email = Email(os.environ.get('SENDGRID_USERNAME'))
-            subject = "Nowe ogloszenia otomoto.pl"
+            subject = "Nowe ogloszenia - otomoto.pl"
             to_email = Email(self.recipients)
-            tmp = NEW_ADVERTS_HEADER + new_adverts.encode('utf-8') + "\n =================================== \n" + spiderstats_string
-            print(tmp)
-            content = Content("hello world!!")
+            body = NEW_ADVERTS_HEADER + new_adverts.encode('utf-8') + "\n =================================== \n" + spiderstats_string
+            content = Content("text/plain", body)
             mail = Mail(from_email, subject, to_email, content)
             response = sg.client.mail.send.post(request_body=mail.get())
-            print(response.status_code)
+            print("Response status code: " + str(response.status_code))
         else:
             print("INFO: No new adverts scraped -> email is not sent.")
 

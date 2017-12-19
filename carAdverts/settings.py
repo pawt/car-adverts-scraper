@@ -14,6 +14,9 @@ BOT_NAME = 'carAdverts'
 SPIDER_MODULES = ['carAdverts.spiders']
 NEWSPIDER_MODULE = 'carAdverts.spiders'
 
+RETRY_TIMES = 5
+RETRY_HTTP_CODES = [403]
+
 DATABASE = {'drivername': '',
             'host': '',
             'port': '',

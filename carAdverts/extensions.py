@@ -6,7 +6,7 @@ import sendgrid
 import os
 from sendgrid.helpers.mail import *
 
-NEW_ADVERTS_HEADER = "\n\n ######## NOWE OGLOSZENIA ########\n\n"
+NEW_ADVERTS_HEADER = "<br> ######## NOWE OGLOSZENIA ######## <br>"
 
 def set_db_session():
     '''
@@ -83,9 +83,9 @@ def parse_new_adverts(newAdvertsObjects):
     '''
     final_list = []
     for new_advert in newAdvertsObjects:
-        final_list.append("\n".join(new_advert.getInfo()))
+        final_list.append("<br>".join(new_advert.getInfo()))
         final_list.append("-" * 100)
-    return '\n'.join(final_list)
+    return '<br>'.join(final_list)
 
 
 class StatusMailer(object):

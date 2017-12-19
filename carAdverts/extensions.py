@@ -139,7 +139,7 @@ class StatusMailer(object):
             subject = "Nowe ogloszenia - otomoto.pl"
             to_email = Email(self.recipients)
             body = NEW_ADVERTS_HEADER + new_adverts.encode('utf-8') + "\n =================================== \n" + spiderstats_string
-            content = Content("text/plain", body)
+            content = Content("text/html", body)
             mail = Mail(from_email, subject, to_email, content)
             response = sg.client.mail.send.post(request_body=mail.get())
             print("Response status code: " + str(response.status_code))

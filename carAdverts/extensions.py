@@ -6,7 +6,7 @@ import sendgrid
 import os
 from sendgrid.helpers.mail import *
 
-NEW_ADVERTS_HEADER = "<br> ######## NOWE OGLOSZENIA ######## <br>"
+NEW_ADVERTS_HEADER = "<br> ######## NOWE OGLOSZENIA ######## <br><br>"
 
 def set_db_session():
     '''
@@ -129,7 +129,7 @@ class StatusMailer(object):
             getSession.close()
 
         #formatting dictionary as a string (body msg of the email)
-        spiderstats_string = '\n'.join('{} : {}'.format(key, val) for key, val in sorted(spider_stats.items()))
+        spiderstats_string = '<br>'.join('{} : {}'.format(key, val) for key, val in sorted(spider_stats.items()))
 
         if new_adverts:
             print("INFO: New adverts found! trying to send e-mail...")
@@ -138,25 +138,11 @@ class StatusMailer(object):
             from_email = Email(os.environ.get('SENDGRID_USERNAME'))
             subject = "Nowe ogloszenia - otomoto.pl"
             to_email = Email(self.recipients)
-            body = NEW_ADVERTS_HEADER + new_adverts.encode('utf-8') + "<br> ================================== <br>" + spiderstats_string
+            body = NEW_ADVERTS_HEADER + new_adverts.encode('utf-8') + "<br><br><br>" + spiderstats_string
             content = Content("text/html", body)
             mail = Mail(from_email, subject, to_email, content)
             response = sg.client.mail.send.post(request_body=mail.get())
             print("Response status code: " + str(response.status_code))
         else:
             print("INFO: No new adverts scraped -> email is not sent.")
-
-        # if new_adverts:
-        #     print("INFO: New adverts found! trying to send e-mail...")
-        #     print("INFO: self.recipients: " + str(self.recipients))
-        #     self.mail.send(
-        #         to=self.recipients,
-        #         subject='Crawler for %s' % (spider.name),
-        #         body=NEW_ADVERTS_HEADER +
-        #              new_adverts.encode('utf-8') +
-        #              "\n =================================== \n" +
-        #              spiderstats_string
-        #     )
-        # else:
-        #     print("INFO: No new adverts scraped -> email is not sent.")
 

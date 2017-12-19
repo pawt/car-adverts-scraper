@@ -138,7 +138,7 @@ class StatusMailer(object):
             from_email = Email(os.environ.get('SENDGRID_USERNAME'))
             subject = "Nowe ogloszenia - otomoto.pl"
             to_email = Email(self.recipients)
-            body = NEW_ADVERTS_HEADER + new_adverts.encode('utf-8') + "\n =================================== \n" + spiderstats_string
+            body = NEW_ADVERTS_HEADER + new_adverts.encode('utf-8') + "<br> ================================== <br>" + spiderstats_string
             content = Content("text/html", body)
             mail = Mail(from_email, subject, to_email, content)
             response = sg.client.mail.send.post(request_body=mail.get())

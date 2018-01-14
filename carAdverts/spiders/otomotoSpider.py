@@ -13,7 +13,7 @@ class OtoMotoSpider(scrapy.Spider):
    # ]
 
     start_urls = [
-        "https://www.otomoto.pl/osobowe/lodz/-/-/-/-/minivan--sedan--suv/?search%5Bfilter_float_price%3Afrom%5D=15000&search%5Bfilter_float_price%3Ato%5D=30000&search%5Bfilter_enum_has_vin%5D=1&search%5Bfilter_float_year%3Afrom%5D=2005&search%5Bfilter_float_year%3Ato%5D=2016&search%5Bfilter_enum_fuel_type%5D%5B0%5D=diesel&search%5Bfilter_enum_fuel_type%5D%5B1%5D=petrol-lpg&search%5Bfilter_enum_damaged%5D=0&search%5Bfilter_float_nr_seats%3Afrom%5D=5&search%5Bfilter_enum_rhd%5D=0&search%5Bfilter_enum_features%5D%5B0%5D=abs&search%5Bfilter_enum_features%5D%5B1%5D=central-lock&search%5Bfilter_enum_no_accident%5D=1&search%5Bbrand_program_id%5D%5B0%5D=&search%5Bdist%5D=100&search%5Bcountry%5D=polska"
+        "https://www.otomoto.pl/osobowe/grotniki/citroen/c5/iii-2008/?search[filter_enum_fuel_type][0]=diesel&search[filter_enum_damaged]=0&search[filter_enum_rhd]=0&search[brand_program_id][0]=&search[dist]=25&search[country]="
     ]
 
     def parse(self, response): 

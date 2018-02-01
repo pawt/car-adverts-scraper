@@ -7,17 +7,13 @@ from time import strftime
 class OtoMotoSpider(scrapy.Spider):
     name = "otomoto"
     allowed_domains = ["otomoto.pl"]
-   # start_urls = [
-   #     "http://otomoto.pl/osobowe?s=dd&l=60&fq%5Blocation_type%5D=post_code_range&fq%5Bpost_code%5D%5Brange%5D=75&fq%5Bpost_code%5D%5Bpostcode%5D=94-102&fq%5Bprice%5D%5Bfrom%5D=10000&fq%5Bprice%5D%5Bto%5D=17000&fq%5Bcomfort%5D%5B0%5D=item.has_air_conditioning&fq%5Bdoors_number%5D%5B0%5D=4%2F5&fq%5Borigin_country%5D=PL&fq%5Bregistration_country%5D=PL&fq%5Btechnical_condition%5D=functioning&fq%5Bhistory%5D%5B0%5D=item.has_no_accident&fq%5Bhistory%5D%5B1%5D=item.has_authorized_service&fq%5Badvertiser_type%5D%5B0%5D=individual&fq%5Badvert_features%5D%5B0%5D=has_photos",
-   #     "http://otomoto.pl/osobowe?s=dd&l=60&q=Toyota+Corolla+Seria+E12&fq%5Blocation_type%5D=post_code_range&fq%5Bpost_code%5D%5Brange%5D=75&fq%5Bpost_code%5D%5Bpostcode%5D=94-102&fq%5Bcomfort%5D%5B0%5D=item.has_air_conditioning&fq%5Bdoors_number%5D%5B0%5D=4%2F5&fq%5Borigin_country%5D=PL&fq%5Bregistration_country%5D=PL&fq%5Btechnical_condition%5D=functioning&fq%5Bhistory%5D%5B0%5D=item.has_no_accident&fq%5Badvertiser_type%5D%5B0%5D=individual&fq%5Badvert_features%5D%5B0%5D=has_photos"
-   # ]
 
     start_urls = [
-        "https://www.otomoto.pl/osobowe/grotniki/citroen/c5/iii-2008/?search[filter_enum_fuel_type][0]=diesel&search[filter_enum_damaged]=0&search[filter_enum_rhd]=0&search[brand_program_id][0]=&search[dist]=25&search[country]="
+        "https://www.otomoto.pl/osobowe/grotniki/citroen/c5/iii-2008/?search[filter_enum_fuel_type][0]=diesel&search[filter_enum_damaged]=0&search[filter_enum_rhd]=0&search[brand_program_id][0]=&search[dist]=25&search[country]=",
+        "https://www.otomoto.pl/osobowe/grotniki/fiat/freemont/?search%5Bbrand_program_id%5D%5B0%5D=&search%5Bdist%5D=25&search%5Bcountry%5D="
     ]
 
     def parse(self, response): 
-        #for sel in response.xpath('//div[@id="listContainer"]//article[@class="offer.item"]'):
         links = response.xpath('//div[@id="listContainer"]//div[@class="offer-item__content"]')
         for sel in links:
             #print(sel.extract())
